@@ -30,4 +30,8 @@ public class MenusInfo {
         }
         return null;
     }
+    
+    public List<MenuItem> getAllMenus() {
+        return this.menusInfo;
+    }
 }
