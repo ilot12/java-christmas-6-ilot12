@@ -1,10 +1,11 @@
 package menu;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Menus {
     
-    private Map<MenuItem, Integer> menus;
+    private Map<MenuItem, Integer> menus = new HashMap<MenuItem, Integer>();
     private MenusInfo menusInfo = new MenusInfo();
     
     public Menus(String menusText) throws IllegalArgumentException {
