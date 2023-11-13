@@ -1,4 +1,4 @@
-package christmas;
+package menu;
 
 public class MenuItem {
     
@@ -6,7 +6,7 @@ public class MenuItem {
     private String name;
     private int price;
     
-    MenuItem(String category, String name, int price){
+    public MenuItem(String category, String name, int price){
         String validatedCategory = validateCategory(category);
         String validatedName = validateName(name);
         int validatedPrice = validatePrice(price);
@@ -52,5 +52,20 @@ public class MenuItem {
     
     public int getPrice() {
         return this.price;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        MenuItem menuItem = (MenuItem) object;
+        if (menuItem.getName() == this.name) {
+            return true;
+        }
+        return false;
     }
 }
