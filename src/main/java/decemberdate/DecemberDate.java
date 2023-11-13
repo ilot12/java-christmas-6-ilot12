@@ -11,7 +11,7 @@ public class DecemberDate {
         this.isWeekend = calculateIsWeekend(validatedDate);
     }
     
-    private int validateDate(String dateText) throws IllegalArgumentException{
+    private int validateDate(String dateText) throws IllegalArgumentException {
         if (dateText.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
