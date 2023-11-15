@@ -6,12 +6,13 @@ import java.util.Map;
 public class Menus {
     
     private Map<MenuItem, Integer> menus = new HashMap<MenuItem, Integer>();
+    private Map<String, Integer> categoryCount = new HashMap<String, Integer>();
     private MenusInfo menusInfo = new MenusInfo();
     private int menusCount = 0;
     private final int MAX_MENU_COUNT = 20;
-    private boolean isOnlyDrink = true;
     
     public Menus(String menusText) throws IllegalArgumentException {
+        initializecategoryCount();
         validateMenusTextNotEmpty(menusText);
         String[] eachMenus = menusText.split(",");
         for (String eachMenu : eachMenus) {
@@ -19,6 +20,12 @@ public class Menus {
         }
         validateMenusCount();
         validateOnlyDrink();
+    }
+    
+    private void initializecategoryCount() {
+        for (MenuItem menuItem : menusInfo.getAllMenus()) {
+            categoryCount.put(menuItem.getCategory(), 0);
+        }
     }
     
     private void validateMenusTextNotEmpty(String menusText) throws IllegalArgumentException {
@@ -40,10 +47,8 @@ public class Menus {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
         menus.put(menuItem, eachMenuQuantity);
+        categoryCount.put(menuItem.getCategory(), categoryCount.get(menuItem.getCategory()) + eachMenuQuantity);
         menusCount += eachMenuQuantity;
-        if (!menuItem.getCategory().equals("음료")) {
-            isOnlyDrink = false;
-        }
     }
     
     private String validateEachMenuName(String eachMenu) throws IllegalArgumentException {
@@ -86,6 +91,15 @@ public class Menus {
     }
     
     private void validateOnlyDrink() throws IllegalArgumentException {
+        boolean isOnlyDrink = true;
+        for (String category : categoryCount.keySet()) {
+            if (category.equals("음료")) {
+                continue;
+            }
+            if (categoryCount.get(category) != 0) {
+                isOnlyDrink = false;
+            }
+        }
         if (isOnlyDrink) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
@@ -93,6 +107,10 @@ public class Menus {
     
     public Map<MenuItem, Integer> getMenus() {
         return this.menus;
+    }
+    
+    public Map<String, Integer> getCategoryCount() {
+        return this.categoryCount;
     }
     
     public int getMenusCount() {
