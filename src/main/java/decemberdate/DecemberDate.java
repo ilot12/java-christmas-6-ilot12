@@ -4,11 +4,12 @@ public class DecemberDate {
     
     private int date;
     private boolean isWeekend;
+    private boolean isStarDay = false;
     
     public DecemberDate(String dateText) {
-        int validatedDate = validateDate(dateText);
-        this.date = validatedDate;
-        this.isWeekend = calculateIsWeekend(validatedDate);
+        this.date = validateDate(dateText);
+        calculateIsWeekend(date);
+        calculateStarDay();
     }
     
     private int validateDate(String dateText) throws IllegalArgumentException {
@@ -25,11 +26,20 @@ public class DecemberDate {
         return date;
     }
     
-    private boolean calculateIsWeekend(int date) {
+    private void calculateIsWeekend(int date) {
         if (date % 7 == 1 || date % 7 == 2) {
-            return true;
+            isWeekend = true;
         }
-        return false;
+        isWeekend = false;
+    }
+    
+    private void calculateStarDay() {
+        if (date % 7 == 3) {
+            isStarDay = true;
+        }
+        if (date == 25) {
+            isStarDay = true;
+        }
     }
     
     public int getDate() {
@@ -37,6 +47,10 @@ public class DecemberDate {
     }
     
     public boolean isWeekend() {
-        return isWeekend;
+        return this.isWeekend;
+    }
+    
+    public boolean isStarDay() {
+        return this.isStarDay;
     }
 }
