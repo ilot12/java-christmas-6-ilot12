@@ -1,10 +1,11 @@
 package menu;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class MenuTest {
+public class MenuInfoTest {
     
     @Test
     void menuItemEquals() {
@@ -41,18 +42,18 @@ public class MenuTest {
     @Test
     void menusInfoGetMenu() {
         MenusInfo menusInfo = new MenusInfo();
-        assertThat(menusInfo.getMenu("양송이수프").getCategory().equals("에피타이저")).isTrue();
-        assertThat(menusInfo.getMenu("양송이수프").getName().equals("양송이수프")).isTrue();
-        assertThat(menusInfo.getMenu("양송이수프").getPrice() == 6000).isTrue();
-        assertThat(menusInfo.getMenu("시저샐러드").getCategory().equals("에피타이저")).isTrue();
-        assertThat(menusInfo.getMenu("시저샐러드").getName().equals("시저샐러드")).isTrue();
-        assertThat(menusInfo.getMenu("시저샐러드").getPrice() == 8000).isTrue();
-        assertThat(menusInfo.getMenu("초코케이크").getCategory().equals("디저트")).isTrue();
-        assertThat(menusInfo.getMenu("초코케이크").getName().equals("초코케이크")).isTrue();
-        assertThat(menusInfo.getMenu("초코케이크").getPrice() == 15000).isTrue();
-        assertThat(menusInfo.getMenu("샴페인").getCategory().equals("음료")).isTrue();
-        assertThat(menusInfo.getMenu("샴페인").getName().equals("샴페인")).isTrue();
-        assertThat(menusInfo.getMenu("샴페인").getPrice() == 25000).isTrue();
+        assertEquals(menusInfo.getMenu("양송이수프").getCategory(), "에피타이저");
+        assertEquals(menusInfo.getMenu("양송이수프").getName(), "양송이수프");
+        assertEquals(menusInfo.getMenu("양송이수프").getPrice(), 6000);
+        assertEquals(menusInfo.getMenu("시저샐러드").getCategory(), "에피타이저");
+        assertEquals(menusInfo.getMenu("시저샐러드").getName(), "시저샐러드");
+        assertEquals(menusInfo.getMenu("시저샐러드").getPrice(), 8000);
+        assertEquals(menusInfo.getMenu("초코케이크").getCategory(), "디저트");
+        assertEquals(menusInfo.getMenu("초코케이크").getName(), "초코케이크");
+        assertEquals(menusInfo.getMenu("초코케이크").getPrice(), 15000);
+        assertEquals(menusInfo.getMenu("샴페인").getCategory(), "음료");
+        assertEquals(menusInfo.getMenu("샴페인").getName(), "샴페인");
+        assertEquals(menusInfo.getMenu("샴페인").getPrice(), 25000);
     }
     
     @Test
@@ -60,6 +61,5 @@ public class MenuTest {
         MenusInfo menusInfo = new MenusInfo();
         assertThat(menusInfo.getMenu("삼각김밥") == null).isTrue();
     }
-    
-    
+
 }
