@@ -51,10 +51,23 @@ public class MenusTest {
     }
     
     @Test
+    void menusOver20() {
+        assertThatThrownBy(() -> new Menus("티본스테이크-12,티본스테이크-9"))
+        .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @Test
+    void meunsOnlyDrink() {
+        assertThatThrownBy(() -> new Menus("제로콜라-1,샴페인-3"))
+        .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @Test
     void menusNoException() {
         MenusInfo menusInfo = new MenusInfo();
         Menus menus = new Menus("티본스테이크-2,제로콜라-1");
         assertEquals(2, menus.getMenus().get(menusInfo.getMenu("티본스테이크")));
         assertEquals(1, menus.getMenus().get(menusInfo.getMenu("제로콜라")));
+        assertEquals(3, menus.getMenusCount());
     }
 }
