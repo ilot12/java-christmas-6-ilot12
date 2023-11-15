@@ -1,12 +1,12 @@
 <p align="center">
-    <img src="./.png" alt="" width="500px">
+    <img src="../imgs/ChristmasText.png" alt="" width="500px">
 </p>
 
 # 4주차 미션 - 크리스마스 프로모션
 > 4주차 미션 크리스마스 프로모션을 구현한 저장소입니다.
 
 <div style="text-align:center;">
-    <img src="./Application.gif" alt="기능실행이미지" width="700px" style="border: 1px solid #000;">
+    <img src="../imgs/Application.gif" alt="기능실행이미지" width="700px" style="border: 1px solid #000;">
 </div>
 
 ## 목차
@@ -14,16 +14,19 @@
  - [기능](#기능)
 	- [시작](#시작)
 	- [날짜 입력](#날짜-입력)
-	- [기능2](#기능2)
+		- [예외 처리 - 날짜 입력](#예외-처리---날짜-입력)
+	- [메뉴 받기](#메뉴-받기)
+		- [예외 처리 - 메뉴 받기](#예외-처리---메뉴-받기)
+	- [주문 종합 출력](#주문-종합-출력)
 
 <br>
 
 ## 실행하기
-현재 Repository를 Clone한 후 Eclipse(혹은 그 외 IDE)를 통해 실행합니다.
-```git
-git clone -b ilot12 [깃허브 주소]
-```
+비공개 미션이므로 github주소가 공개되어 있지 않습니다.
+아이디/비밀번호 혹은 토큰없이 실행할 수 없습니다.
 <br>
+
+## 기능
 
 ### 시작
 - 시작하면 `안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.`가 출력됩니다.
@@ -35,17 +38,18 @@ git clone -b ilot12 [깃허브 주소]
 - 잘못된 입력을 한 경우 각각의 입력에 따라 `[ERROR]`로 시작되는 메세지가 출력되고 그 곳부터 다시 입력해야 합니다.
 
 #### 예외 처리 - 날짜 입력
+- 아무 입력도 하지 않는 경우를 예외 처리했습니다.
 - 수가 아닌 입력을 하는 경우를 예외 처리했습니다.
 - 1 ~ 31에 해당하지 않는 입력을 하는 경우를 예외 처리했습니다.
 
 	<details>
 	<summary>예외 처리 코드 보기</summary>
-		<img src="../imgs/.png" alt="예외코드" width="800px">
+		<img src="../imgs/code_1_date_input.png" alt="날짜입력예외코드" width="800px">
 	</details>
 	<details>
 	<summary>실행 결과 및 테스트 코드 보기</summary>
-		<img src="../imgs/.gif" alt="예외결과" width="800px">
-		<img src="../imgs/.png" alt="예외테스트" width="800px">
+		<img src="../imgs/run_1_date_input.gif" alt="날짜입력예외결과" width="800px">
+		<img src="../imgs/test_1_date_input.png" alt="날짜입력예외테스트" width="800px">
 	</details>
 	
 ### 메뉴 받기
@@ -54,20 +58,21 @@ git clone -b ilot12 [깃허브 주소]
 - 잘못된 입력을 한 경우 각각의 입력에 따라 `[ERROR]`로 시작되는 메세지가 출력되고 그 곳부터 다시 입력해야 합니다.
 
 #### 예외 처리 - 메뉴 받기
+- 아무 입력도 하지 않는 경우를 예외 처리했습니다.
+- 메뉴 형식이 예시와 다른 경우(eg. `{메뉴}-{수량}-{수량}` 혹은 `{메뉴}-` 등..)를 예외 처리했습니다.
 - 존재하지 않는 메뉴명을 입력하는 경우를 예외 처리했습니다.
 - 수량에 수가 아닌 입력하는 경우를 예외 처리했습니다.
-- 0이나 음수를 입력하는 경우를 예외 처리했습니다.
-- 메뉴 형식이 예시와 다른 경우(eg. `{메뉴}-{수량}-{수량}` 혹은 `{메뉴}-` 등..)를 예외 처리했습니다.
+- 수량에 0이나 음수를 입력하는 경우를 예외 처리했습니다.
 - 중복 메뉴를 입력한 경우를 예외 처리했습니다.
 
 	<details>
 	<summary>예외 처리 코드 보기</summary>
-		<img src="../imgs/.png" alt="예외코드" width="800px">
+		<img src="../imgs/code_2_menus_input.png" alt="메뉴입력예외코드" width="800px">
 	</details>
 	<details>
 	<summary>실행 결과 및 테스트 코드 보기</summary>
-		<img src="../imgs/.gif" alt="예외결과" width="800px">
-		<img src="../imgs/.png" alt="예외테스트" width="800px">
+		<img src="../imgs/run_2_menus_input.gif" alt="메뉴입력예외결과" width="800px">
+		<img src="../imgs/test_2_menus_input.png" alt="메뉴입력예외테스트" width="800px">
 	</details>
 
 ### 주문 종합 출력
@@ -79,4 +84,7 @@ git clone -b ilot12 [깃허브 주소]
 	- 총 혜택 금액
 	- 할인 후 예상 결제 금액
 	- 12월 이벤트 배지
+
+	
+<img src="../imgs/print.png" alt="실행결과" width="800px">
 	
