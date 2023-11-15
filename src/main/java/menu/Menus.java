@@ -7,6 +7,9 @@ public class Menus {
     
     private Map<MenuItem, Integer> menus = new HashMap<MenuItem, Integer>();
     private MenusInfo menusInfo = new MenusInfo();
+    private int menusCount = 0;
+    private final int MAX_MENU_COUNT = 20;
+    private boolean isOnlyDrink = true;
     
     public Menus(String menusText) throws IllegalArgumentException {
         validateMenusTextNotEmpty(menusText);
@@ -14,6 +17,8 @@ public class Menus {
         for (String eachMenu : eachMenus) {
             updateEachMenuText(eachMenu);
         }
+        validateMenusCount();
+        validateOnlyDrink();
     }
     
     private void validateMenusTextNotEmpty(String menusText) throws IllegalArgumentException {
@@ -35,6 +40,10 @@ public class Menus {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
         menus.put(menuItem, eachMenuQuantity);
+        menusCount += eachMenuQuantity;
+        if (!menuItem.getCategory().equals("음료")) {
+            isOnlyDrink = false;
+        }
     }
     
     private String validateEachMenuName(String eachMenu) throws IllegalArgumentException {
@@ -63,10 +72,30 @@ public class Menus {
         if (!eachMenuQuantity.matches("[-0-9]+")) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
-        return Integer.parseInt(eachMenuQuantity);
+        int quantity = Integer.parseInt(eachMenuQuantity);
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+        return quantity;
+    }
+    
+    private void validateMenusCount() throws IllegalArgumentException {
+        if (menusCount > MAX_MENU_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+    
+    private void validateOnlyDrink() throws IllegalArgumentException {
+        if (isOnlyDrink) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
     
     public Map<MenuItem, Integer> getMenus() {
         return this.menus;
+    }
+    
+    public int getMenusCount() {
+        return this.menusCount;
     }
 }
