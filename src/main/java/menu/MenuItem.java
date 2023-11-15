@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.Objects;
+
 public class MenuItem {
     
     private String category;
@@ -63,9 +65,14 @@ public class MenuItem {
             return false;
         }
         MenuItem menuItem = (MenuItem) object;
-        if (menuItem.getName() == this.name) {
+        if (Objects.equals(this.name, menuItem.name)) {
             return true;
         }
         return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
